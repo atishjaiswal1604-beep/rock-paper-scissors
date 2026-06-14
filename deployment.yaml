@@ -1,45 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rps-game-deployment
-  labels:
-    app: rps-game
+  name: rps-app
 spec:
-  replicas: 2 # Runs two instances for high availability
+  replicas: 2
   selector:
     matchLabels:
-      app: rps-game
+      app: rps-app
   template:
     metadata:
       labels:
-        app: rps-game
+        app: rps-app
     spec:
       containers:
-      - name: rps-game-container
-        # ⚠️ REPLACE THIS with your actual Docker registry image name and tag
+      - name: rps-app
         image: 228096284456.dkr.ecr.ap-south-2.amazonaws.com/rockpaperscissors:new
         ports:
         - containerPort: 5000
-        env:
-        - name: FLASK_ENV
-          value: "production"
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "250m"
-            memory: "256Mi"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: rps-game-service
+  name: rps-service
 spec:
-  type: NodePort # Use LoadBalancer instead if deploying to AWS, GCP, or Azure
+  type: LoadBalancer
   selector:
-    app: rps-game
+    app: rps-app
   ports:
-    - protocol: TCP
-      port: 80         # The port the service exposes outside the cluster
-      targetPort: 5000 # The port your Flask app is listening on inside the container
+    - port: 80
+      targetPort: 5000
