@@ -17,7 +17,7 @@ spec:
       containers:
       - name: rps-game-container
         # ⚠️ REPLACE THIS with your actual Docker registry image name and tag
-        image: 228096284456.dkr.ecr.ap-south-2.amazonaws.com/rockpaperscissors 
+        image: 228096284456.dkr.ecr.ap-south-2.amazonaws.com/rockpaperscissors:new
         ports:
         - containerPort: 5000
         env:
