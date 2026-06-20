@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = "ap-south-2"
-        ECR_REPO = "228096284456.dkr.ecr.ap-south-2.amazonaws.com/rockpaperscissors"
+        ECR_REPO = "228096284456.dkr.ecr.ap-south-2.amazonaws.com/cargame1"
         IMAGE_TAG = "new"
     }
 
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    aws eks update-kubeconfig --name Myekscluster1 --region $AWS_REGION
+                    aws eks update-kubeconfig --name ekscluster2 --region $AWS_REGION
                     kubectl apply -f deployment.yaml
                     '''
                 }
