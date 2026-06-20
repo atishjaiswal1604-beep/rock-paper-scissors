@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: rps-app
-        image: 228096284456.dkr.ecr.ap-south-2.amazonaws.com/rockpaperscissors:new
+        image: 228096284456.dkr.ecr.ap-south-2.amazonaws.com/cargame1:new
         ports:
         - containerPort: 5000
 ---
