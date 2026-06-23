@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    aws eks update-kubeconfig --name ekscluster2 --region $AWS_REGION
+                    aws eks update-kubeconfig --name atikubecluster --region $AWS_REGION
                     kubectl apply -f deployment.yaml
                     '''
                 }
